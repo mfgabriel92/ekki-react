@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
+import Loading from '../Loading'
 
 class Home extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      me: null
+      me: []
     }
   }
 
   componentWillMount() {
-    this.props.me()
+    const { me } = this.props
+    me()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,8 +24,16 @@ class Home extends Component {
   }
 
   render() {
+    const { me, me: { name } } = this.state
+
+    if (!me || !name) {
+      return <div className="container"><Loading color="dark m-auto" /></div>
+    }
+
     return (
-      <div></div>
+      <div className="container">
+        <h5>Olá, {me.name}</h5>
+      </div>
     )
   }
 }
