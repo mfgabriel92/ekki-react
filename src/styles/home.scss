@@ -1,0 +1,19 @@
+#home {
+  .card {
+    color: #fff;
+    margin-top: 45px;
+    border: none;
+
+    .card-img-top {
+      height: 150px;
+      background: #599fea;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+}

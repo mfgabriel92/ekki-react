@@ -43,14 +43,19 @@ class Header extends Component {
     return (
       <nav id="header" className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
+          <a class="navbar-brand" href="#">Ekki</a>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <a className="nav-link" href="#"> <span className="sr-only">(current)</span></a>
               </li>
             </ul>
-            <span className="navbar-text balance">
-              {this._renderBalance()}
+            <span className="navbar-text col-3 user">
+              <div className="user-photo"></div>
+              <div className="user-info">
+                <span className="user-name">{me.name}</span><br/>
+                <span className="user-balance">{this._renderBalance()}</span>
+              </div>
             </span>
           </div>
         </div>
