@@ -24,7 +24,8 @@ const persistConfig = {
     '_persist',
     'app',
     'me',
-    'beneficiary'
+    'beneficiary',
+    'transaction'
   ]
 }
 

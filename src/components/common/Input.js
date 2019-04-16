@@ -7,7 +7,7 @@ class Input extends Component {
 
     return (
       <div>
-        <label>{label}</label>
+        { label && <label>{label}</label> }
         <input type={type} className="form-control" name={name} value={value} readOnly={readOnly} onChange={onChange} />
       </div>
     )

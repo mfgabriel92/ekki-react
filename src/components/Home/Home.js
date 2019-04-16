@@ -21,6 +21,7 @@ class Home extends Component {
             title="Fazer Transferência"
             description="Faça uma transferência para um de seus beneficiários."
             buttonText="Transferir"
+            url="transactions"
             className="fa-5x"
           />
           <Card

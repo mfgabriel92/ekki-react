@@ -7,7 +7,7 @@ const mapActionCreators = {
 }
 
 const mapStateToProps = state => ({
-  beneficiary: state.beneficiary
+  beneficiary: state.beneficiary.addBeneficiary
 })
 
 export default connect(mapStateToProps, mapActionCreators)(Beneficiary)
