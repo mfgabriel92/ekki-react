@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Input from '../common/Input'
 import Loading from '../Loading'
 
@@ -26,7 +27,7 @@ class Beneficiary extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { beneficiary: { progress, success, failure }} = nextProps
+    const { beneficiary: { progress, success, failure } } = nextProps
 
     this.setState({ isLoading: !success && !failure && progress })
   }
@@ -119,6 +120,7 @@ class Beneficiary extends Component {
           </div>
 
           <div className="form-group">
+            <Link to="/" className="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-secondary float-left">Voltar</Link>
             <button className="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-primary float-right" onClick={this.onSubmit}>Adicionar</button>
           </div>
         </form>
