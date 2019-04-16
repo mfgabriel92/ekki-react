@@ -5,3 +5,15 @@
 @import './header.scss';
 @import './home.scss';
 @import './beneficiary.scss';
+
+.alert {
+  position: fixed;
+  height: 50px;
+  top: 138px;
+  right: 25px;
+  z-index: 999;
+
+  .fa {
+    margin-right: 15px;
+  }
+}

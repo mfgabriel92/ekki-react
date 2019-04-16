@@ -8,6 +8,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { apiMiddleware } from 'redux-api-middleware'
 import { persistCombineReducers, persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/es/integration/react'
+import FlashMessage from './containers/common/FlashMessage'
 import './styles/App.scss'
 
 const middleware = [thunkMiddleware, apiMiddleware]
@@ -21,6 +22,7 @@ const persistConfig = {
     'recipients',
     'router',
     '_persist',
+    'app',
     'me',
     'beneficiary'
   ]
@@ -38,6 +40,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
+          <FlashMessage />
           <AppContainer />
         </PersistGate>
       </Provider>
