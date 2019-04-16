@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Loading from '../Loading'
 
 class Header extends Component {
@@ -43,11 +44,11 @@ class Header extends Component {
     return (
       <nav id="header" className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <a class="navbar-brand" href="#">Ekki</a>
+          <Link className="navbar-brand" to="/">Ekki</Link>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#"> <span className="sr-only">(current)</span></a>
+                <Link className="nav-link" to="/"> <span className="sr-only">(current)</span></Link>
               </li>
             </ul>
             <span className="navbar-text col-3 user">

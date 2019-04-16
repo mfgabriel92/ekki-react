@@ -21,7 +21,8 @@ const persistConfig = {
     'recipients',
     'router',
     '_persist',
-    'me'
+    'me',
+    'beneficiary'
   ]
 }
 
