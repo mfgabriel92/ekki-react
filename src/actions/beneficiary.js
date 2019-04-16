@@ -23,7 +23,8 @@ const ACTION_HANDLERS = {
   [ADD_BENEFICIARY]: state => ({
     ...state,
     progress: true,
-    success: false
+    success: false,
+    failure: false
   }),
   [ADD_BENEFICIARY_SUCCESS]: state => ({
     ...state,

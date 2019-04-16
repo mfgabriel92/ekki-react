@@ -4,10 +4,10 @@ import cx from 'classnames'
 
 class Loading extends Component {
   render() {
-    const { size, color } = this.props
+    const { size, color, className } = this.props
 
     return (
-      <div className={cx('spinner', size, color)}>
+      <div className={cx('spinner', size, color, className)}>
         <div className="bounce1"></div>
         <div className="bounce2"></div>
         <div className="bounce3"></div>

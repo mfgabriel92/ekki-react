@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Input from '../common/Input';
+import Input from '../common/Input'
+import Loading from '../Loading'
 
 class Beneficiary extends Component {
   constructor() {
@@ -7,12 +8,13 @@ class Beneficiary extends Component {
 
     this.state = {
       userId: 1,
-      name: '',
-      accountNumber: '',
-      agency: '',
-      bankName: '',
-      city: '',
-      state: ''
+      name: null,
+      accountNumber: null,
+      agency: null,
+      bankName: null,
+      city: null,
+      state: null,
+      isLoading: false
     }
   }
 
@@ -21,6 +23,12 @@ class Beneficiary extends Component {
       accountNumber: `${Math.floor(Math.random() * 99999)}-${Math.floor(Math.random() * 9)}`,
       agency: `${Math.floor(Math.random() * 9999)}`
     })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { beneficiary: { progress, success, failure }} = nextProps
+
+    this.setState({ isLoading: !success && !failure && progress })
   }
 
   onChange = (e) => {
@@ -37,7 +45,11 @@ class Beneficiary extends Component {
   }
 
   render() {
-    const { name, accountNumber, agency, bankName, city, state } = this.state
+    const { name, accountNumber, agency, bankName, state, isLoading } = this.state
+
+    if (isLoading) {
+      return <Loading size="dark" className="m-auto" />
+    }
 
     return (
       <div id="beneficiary" className="container">

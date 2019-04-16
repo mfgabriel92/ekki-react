@@ -21,7 +21,7 @@
   }
 
   &.dark > div {
-    background-color: #333;
+    background-color: #000;
   }
 }
 
@@ -48,4 +48,8 @@
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
+}
+
+.loading-overlay {
+  
 }
