@@ -22,12 +22,20 @@ class Transaction extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { beneficiary: { progress, success, failure, beneficiaresList } } = nextProps
+    const { beneficiary: { beneficiaresList }, transaction: { progress, success, failure }, myself: { me } } = nextProps
 
     this.setState({
+      userId: me && me.id,
       isLoading: !success && !failure && progress,
       beneficiaresList
     })
+
+    if (success) {
+      this.setState({
+        beneficiaryId: null,
+        amount: null
+      })
+    }
   }
 
   onChange = (e) => {

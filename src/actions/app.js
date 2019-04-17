@@ -1,4 +1,5 @@
 import { ADD_BENEFICIARY_SUCCESS, ADD_BENEFICIARY_FAILURE } from './beneficiary'
+import { ADD_TRANSACTION_SUCCESS, ADD_TRANSACTION_FAILURE } from './transaction'
 
 export const ADD_FLASH_MESSAGE = 'app:add_flash_message'
 export const DELETE_FLASH_MESSAGE = 'app:delete_flash_message'
@@ -41,6 +42,20 @@ const ACTION_HANDLERS = {
     ...state,
     flashMessage: {
       message: 'Erro ao adicionar o beneficiário',
+      type: TYPE_ERROR
+    }
+  }),
+  [ADD_TRANSACTION_SUCCESS]: state => ({
+    ...state,
+    flashMessage: {
+      message: 'Transação efetuada com sucesso ',
+      type: TYPE_SUCCESS
+    }
+  }),
+  [ADD_TRANSACTION_FAILURE]: state => ({
+    ...state,
+    flashMessage: {
+      message: 'Erro ao efetuar a transação',
       type: TYPE_ERROR
     }
   })

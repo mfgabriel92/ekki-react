@@ -7,8 +7,8 @@ class Beneficiary extends Component {
   constructor() {
     super()
 
-    this.state = {
-      userId: 1,
+    this.defaultState = {
+      userId: null,
       name: null,
       accountNumber: null,
       agency: null,
@@ -17,6 +17,8 @@ class Beneficiary extends Component {
       state: null,
       isLoading: false
     }
+
+    this.state = this.defaultState
   }
 
   componentWillMount() {
@@ -27,9 +29,15 @@ class Beneficiary extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { beneficiary: { progress, success, failure } } = nextProps
+    const { beneficiary: { progress, success, failure }, myself: { me } } = nextProps
 
     this.setState({ isLoading: !success && !failure && progress })
+
+    if (success) {
+      this.setState({ ...this.defaultState })
+    }
+
+    this.setState({ userId: me && me.id })
   }
 
   onChange = (e) => {
