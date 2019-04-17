@@ -8,6 +8,7 @@ class Transaction extends Component {
     super(props)
 
     this.state = {
+      userId: null,
       beneficiaryId: null,
       amount: null,
       beneficiaresList: null,

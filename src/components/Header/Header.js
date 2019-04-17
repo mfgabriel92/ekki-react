@@ -7,13 +7,8 @@ class Header extends Component {
     super()
 
     this.state = {
-      me: []
+      me: null
     }
-  }
-
-  componentWillMount() {
-    const { me } = this.props
-    me()
   }
 
   componentWillReceiveProps(nextProps) {
