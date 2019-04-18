@@ -1,11 +1,10 @@
-import Home from '../../components/Home'
+import Home from '.'
 import { connect } from 'react-redux'
 
 const mapActionCreators = {
 }
 
-const mapStateToProps = (state, props) => ({
-  ...props
+const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, mapActionCreators)(Home)

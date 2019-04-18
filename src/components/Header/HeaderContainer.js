@@ -1,4 +1,4 @@
-import Header from '../../components/Header'
+import Header from '.'
 import { connect } from 'react-redux'
 
 const mapActionCreators = {

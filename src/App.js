@@ -8,7 +8,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { apiMiddleware } from 'redux-api-middleware'
 import { persistCombineReducers, persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/es/integration/react'
-import FlashMessage from './containers/common/FlashMessage'
+import FlashMessage from './components/common/FlashMessage/FlashMessageContainer'
 import './styles/App.scss'
 
 const middleware = [thunkMiddleware, apiMiddleware]

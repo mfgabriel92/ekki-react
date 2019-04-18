@@ -1,4 +1,4 @@
-import Transaction from '../../components/Transaction'
+import Transaction from '.'
 import { connect } from 'react-redux'
 import { getBeneficiaries } from '../../actions/beneficiary'
 import { addTransaction } from '../../actions/transaction'

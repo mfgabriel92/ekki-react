@@ -114,7 +114,7 @@ class Beneficiary extends Component {
               </select>
             </div>
             {
-              state !== '' && <div className="col-lg-6 col-md-6 col-sm-12">
+              state && <div className="col-lg-6 col-md-6 col-sm-12">
                 <label htmlFor="state">Cidade</label>
                 <select name="city" className="form-control" defaultValue="" onChange={this.onChange}>
                   <option value="" disabled>--</option>

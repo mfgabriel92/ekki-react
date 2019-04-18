@@ -33,6 +33,7 @@ class Home extends Component {
             title="Ver Histórico"
             description="Veja o histórico das transações efetuadas para os seus beneficiários."
             buttonText="Ver"
+            url="histories"
             className="fa-5x"
           />
         </div>

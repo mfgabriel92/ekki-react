@@ -1,4 +1,4 @@
-import Beneficiary from '../../components/Beneficiary'
+import Beneficiary from '.'
 import { connect } from 'react-redux'
 import { addBeneficiary } from '../../actions/beneficiary'
 

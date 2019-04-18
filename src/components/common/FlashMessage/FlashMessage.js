@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { deleteFlashMessage } from '../../actions/app'
+import { deleteFlashMessage } from '../../../actions/app'
 import FontAwesome from 'react-fontawesome'
 import cx from 'classnames'
 
