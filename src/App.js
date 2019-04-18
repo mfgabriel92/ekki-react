@@ -25,7 +25,8 @@ const persistConfig = {
     'app',
     'me',
     'beneficiary',
-    'transaction'
+    'transaction',
+    'history'
   ]
 }
 

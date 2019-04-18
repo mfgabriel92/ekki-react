@@ -3,10 +3,6 @@ import moment from 'moment'
 import Card from './Card'
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
-  
   render() {
     return (
       <div id="home" className="container">

@@ -16,25 +16,22 @@ class Transaction extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { getBeneficiaries } = this.props
     getBeneficiaries({ userId: 1 })
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { beneficiary: { beneficiaresList }, transaction: { progress, success, failure }, myself: { me } } = nextProps
+  static getDerivedStateFromProps(props, state) {
+    const { beneficiary: { beneficiaresList }, transaction: { progress, success, failure }, myself: { me } } = props
 
-    this.setState({
+    if (success) {
+      window.location.href = 'http://localhost:3000/'
+    }
+
+    return {
       userId: me && me.id,
       isLoading: !success && !failure && progress,
       beneficiaresList
-    })
-
-    if (success) {
-      this.setState({
-        beneficiaryId: null,
-        amount: null
-      })
     }
   }
 

@@ -7,37 +7,36 @@ class Beneficiary extends Component {
   constructor() {
     super()
 
-    this.defaultState = {
-      userId: null,
-      name: null,
-      accountNumber: null,
-      agency: null,
-      bankName: null,
-      city: null,
-      state: null,
+    this.state = {
+      userId: '',
+      name: '',
+      accountNumber: '',
+      agency: '',
+      bankName: '',
+      city: '',
+      state: '',
       isLoading: false
     }
-
-    this.state = this.defaultState
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
       accountNumber: `${Math.floor(Math.random() * 99999)}-${Math.floor(Math.random() * 9)}`,
       agency: `${Math.floor(Math.random() * 9999)}`
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { beneficiary: { progress, success, failure }, myself: { me } } = nextProps
-
-    this.setState({ isLoading: !success && !failure && progress })
+  static getDerivedStateFromProps(props, state) {
+    const { beneficiary: { progress, success, failure }, myself: { me } } = props
 
     if (success) {
-      this.setState({ ...this.defaultState })
+      window.location.href = 'http://localhost:3000/'
     }
 
-    this.setState({ userId: me && me.id })
+    return {
+      userId: me && me.id,
+      isLoading: !success && !failure && progress
+    }
   }
 
   onChange = (e) => {
