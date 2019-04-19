@@ -1,3 +1,9 @@
 #beneficiary {
   position: relative;
+
+  @media (max-width: 762px) {
+    .btn {
+      margin-bottom: 15px;
+    }
+  }
 }

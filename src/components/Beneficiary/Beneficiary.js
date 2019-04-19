@@ -126,8 +126,10 @@ class Beneficiary extends Component {
         </div>
 
         <div className="form-group">
-          <Link to="/" className="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-secondary float-left">Voltar</Link>
-          <button className="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-primary float-right" onClick={this.onSubmit}>Adicionar</button>
+          <div className="row">
+            <Link to="/" className="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-secondary float-left">Voltar</Link>
+            <button className="col-lg-3 col-md-3 col-sm-12 col-xs-12 btn btn-primary ml-auto" onClick={this.onSubmit}>Adicionar</button>
+          </div>
         </div>
       </div>
     )

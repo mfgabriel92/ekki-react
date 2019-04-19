@@ -14,7 +14,7 @@ class DefaultLayout extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div id="default-layout">
         <Header {...this.props} />
         <Switch>
           <Route exact path='/' render={props => <Home {...this.props} />} />

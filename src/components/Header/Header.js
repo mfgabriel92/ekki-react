@@ -40,7 +40,10 @@ class Header extends Component {
       <nav id="header" className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
           <Link className="navbar-brand" to="/">Ekki</Link>
-          <div className="collapse navbar-collapse" id="navbarText">
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="menu">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link className="nav-link" to="/"> <span className="sr-only">(current)</span></Link>
@@ -49,7 +52,7 @@ class Header extends Component {
             <span className="navbar-text col-3 user">
               <div className="user-photo"></div>
               <div className="user-info">
-                <span className="user-name">{me.name}</span><br/>
+                <span className="user-name">{me.name}</span><br />
                 <span className="user-balance">{this._renderBalance()}</span>
               </div>
             </span>

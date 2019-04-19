@@ -67,15 +67,15 @@ class FlashMessage extends Component {
     return (
       !hide && <div className={cx('text-center alert', modalClass)}>
         <div className="row">
-          <div className="col-lg-2 icon">
+          <div className="col-2 icon">
             <FontAwesome name={icon} className='fa-3x' />
           </div>
-          <div className="col-lg-10">
+          <div className="col-10 message">
             {
               errors !== null
                 ? errors.map(e => {
                   return (
-                    <div className="text-left">{e.defaultMessage}</div>
+                    <div>{e.defaultMessage}</div>
                   )
                 })
                 : message
