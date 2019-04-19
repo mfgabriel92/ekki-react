@@ -3,15 +3,13 @@ import app from './app'
 import me from './me'
 import beneficiary from './beneficiary'
 import transaction from './transaction'
-import history from './history'
 
 const reducers = {
   router,
   app,
   me,
   beneficiary,
-  transaction,
-  history
+  transaction
 };
 
 export default reducers;

@@ -8,17 +8,17 @@ class Transaction extends Component {
     super(props)
 
     this.state = {
-      userId: null,
-      beneficiaryId: null,
-      amount: null,
-      beneficiaresList: null,
+      userId: 0,
+      beneficiaryId: '',
+      amount: '',
+      beneficiaresList: '',
       isLoading: false
     }
   }
 
   componentDidMount() {
     const { getBeneficiaries } = this.props
-    getBeneficiaries({ userId: 1 })
+    getBeneficiaries(1)
   }
 
   static getDerivedStateFromProps(props, state) {

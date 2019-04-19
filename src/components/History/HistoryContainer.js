@@ -1,13 +1,13 @@
 import History from '../../components/History'
 import { connect } from 'react-redux'
-import { getHistory } from '../../actions/history'
+import { getTransactions } from '../../actions/transaction'
 
 const mapActionCreators = {
-  getHistory
+  getTransactions
 }
 
 const mapStateToProps = state => ({
-  history: state.history
+  transaction: state.transaction.getTransactions
 })
 
 export default connect(mapStateToProps, mapActionCreators)(History)

@@ -17,7 +17,7 @@ class Card extends Component {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
-            <Link to={url} className="btn btn-secondary col-lg-5 col-md-5 col-sm-12">{buttonText}</Link>
+            <Link to={url} className="btn btn-success col-lg-5 col-md-5 col-sm-12">{buttonText}</Link>
           </div>
         </div>
       </div>

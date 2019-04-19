@@ -3,6 +3,9 @@ import { RSAA } from 'redux-api-middleware'
 export const ADD_TRANSACTION = 'transaction:add_transaction'
 export const ADD_TRANSACTION_SUCCESS = 'transaction:add_transaction_success'
 export const ADD_TRANSACTION_FAILURE = 'transaction:add_transaction_failure'
+export const GET_TRANSACTIONS = 'transaction:get_transactions'
+export const GET_TRANSACTIONS_SUCCESS = 'transaction:get_transactions_success'
+export const GET_TRANSACTIONS_FAILURE = 'transaction:get_transactions_failure'
 
 export function addTransaction(data) {
   return {
@@ -15,6 +18,19 @@ export function addTransaction(data) {
       },
       body: JSON.stringify(data),
       types: [ADD_TRANSACTION, ADD_TRANSACTION_SUCCESS, ADD_TRANSACTION_FAILURE]
+    }
+  }
+}
+
+export function getTransactions(id) {
+  return {
+    [RSAA]: {
+      endpoint: `http://localhost:8080/api/transactions?userId=${id}`,
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+      },
+      types: [GET_TRANSACTIONS, GET_TRANSACTIONS_SUCCESS, GET_TRANSACTIONS_FAILURE]
     }
   }
 }
@@ -42,6 +58,30 @@ const ACTION_HANDLERS = {
       success: false,
       failure: true
     }
+  }),
+  [GET_TRANSACTIONS]: state => ({
+    ...state,
+    getTransactions: {
+      progress: true,
+      success: false,
+      failure: false
+    }
+  }),
+  [GET_TRANSACTIONS_SUCCESS]: (state, action) => ({
+    ...state,
+    getTransactions: {
+      progress: false,
+      success: true,
+      transactions: action.payload
+    }
+  }),
+  [GET_TRANSACTIONS_FAILURE]: state => ({
+    ...state,
+    getTransactions: {
+      progress: false,
+      success: false,
+      failure: true
+    }
   })
 };
 
@@ -50,6 +90,12 @@ const initialState = {
     progress: false,
     success: false,
     failure: false
+  },
+  getTransactions: {
+    progress: false,
+    success: false,
+    failure: false,
+    transactions: []
   }
 };
 

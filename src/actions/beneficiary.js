@@ -25,13 +25,11 @@ export function addBeneficiary(data) {
 export function getBeneficiaries(id) {
   return {
     [RSAA]: {
-      endpoint: 'http://localhost:8080/api/beneficiaries',
+      endpoint: `http://localhost:8080/api/beneficiaries?userId=${id}`,
       method: 'GET',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
       },
-      // body: JSON.stringify(id),
       types: [GET_BENEFICIARIES, GET_BENEFICIARIES_SUCCESS, GET_BENEFICIARIES_FAILURE]
     }
   }

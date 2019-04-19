@@ -26,7 +26,7 @@ class Header extends Component {
       return <Loading size="small" />
     }
 
-    return `R$ ${balance.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")}`
+    return `R$ ${balance.toFixed(2)}`
   }
 
   render() {
