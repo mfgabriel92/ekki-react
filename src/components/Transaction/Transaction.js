@@ -8,9 +8,9 @@ class Transaction extends Component {
     super(props)
 
     this.state = {
-      userId: 0,
-      beneficiaryId: '',
-      amount: '',
+      transactionUserId: 0,
+      transactionBeneficiaryId: '',
+      transactionAmount: '',
       beneficiaresList: '',
       isLoading: false
     }
@@ -21,7 +21,7 @@ class Transaction extends Component {
     getBeneficiaries(1)
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props) {
     const { beneficiary: { beneficiaresList }, transaction: { progress, success, failure }, myself: { me } } = props
 
     if (success) {
@@ -29,7 +29,7 @@ class Transaction extends Component {
     }
 
     return {
-      userId: me && me.id,
+      transactionUserId: me && me.userId,
       isLoading: !success && !failure && progress,
       beneficiaresList
     }
@@ -62,12 +62,12 @@ class Transaction extends Component {
     if (beneficiaresList && beneficiaresList.length > 0) {
       return <div>
         <label>Beneficiário</label>
-        <select name="beneficiaryId" className="form-control" defaultValue="" onChange={this.onChange}>
+        <select name="transactionBeneficiaryId" className="form-control" defaultValue="" onChange={this.onChange}>
           <option value="" disabled>--</option>
           {
             beneficiaresList.map(b => {
               return (
-                <option key={b.id} value={b.id}>{b.name}</option>
+                <option key={b.beneficiaryId} value={b.beneficiaryId}>{b.beneficiaryName}</option>
               )
             })
           }
@@ -77,7 +77,7 @@ class Transaction extends Component {
   }
 
   render() {
-    const { amount, isLoading } = this.state
+    const { transactionAmount, isLoading } = this.state
 
     if (isLoading) {
       return <Loading size="dark" className="m-auto" />
@@ -97,12 +97,13 @@ class Transaction extends Component {
               <div className="input-group-text">R$</div>
             </div>
             <Input
-              name="amount"
+              name="transactionAmount"
               className="form-control"
               options={{
                 numeral: true,
                 numeralThousandsGroupStyle: 'thousand'
               }}
+              value={transactionAmount}
               onChange={this.onChange}
             />
           </div>

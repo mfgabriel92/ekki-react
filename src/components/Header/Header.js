@@ -20,13 +20,13 @@ class Header extends Component {
   }
 
   _renderBalance = () => {
-    const { me, me: { balance } } = this.state
+    const { me, me: { userBalance } } = this.state
 
-    if (!me || !balance) {
+    if (!me || !userBalance) {
       return <Loading size="small" />
     }
 
-    return `R$ ${balance.toFixed(2)}`
+    return `R$ ${userBalance.toFixed(2)}`
   }
 
   render() {
@@ -52,7 +52,7 @@ class Header extends Component {
             <span className="navbar-text col-3 user">
               <div className="user-photo"></div>
               <div className="user-info">
-                <span className="user-name">{me.name}</span><br />
+                <span className="user-name">{me.userName}</span><br />
                 <span className="user-balance">{this._renderBalance()}</span>
               </div>
             </span>

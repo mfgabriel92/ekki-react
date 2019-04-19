@@ -8,25 +8,25 @@ class Beneficiary extends Component {
     super()
 
     this.state = {
-      userId: '',
-      name: '',
-      accountNumber: '',
-      agency: '',
-      bankName: '',
-      city: '',
-      state: '',
+      beneficiaryUserId: '',
+      beneficiaryName: '',
+      beneficiaryAccountNumber: '',
+      beneficiaryAgency: '',
+      beneficiaryBankName: '',
+      beneficiaryCity: '',
+      beneficiaryState: '',
       isLoading: false
     }
   }
 
   componentDidMount() {
     this.setState({
-      accountNumber: `${Math.floor(Math.random() * 99999)}-${Math.floor(Math.random() * 9)}`,
-      agency: `${Math.floor(Math.random() * 9999)}`
+      beneficiaryAccountNumber: `${Math.floor(Math.random() * 99999)}-${Math.floor(Math.random() * 9)}`,
+      beneficiaryAgency: `${Math.floor(Math.random() * 9999)}`
     })
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props) {
     const { beneficiary: { progress, success, failure }, myself: { me } } = props
 
     if (success) {
@@ -34,7 +34,7 @@ class Beneficiary extends Component {
     }
 
     return {
-      userId: me && me.id,
+      beneficiaryUserId: me && me.userId,
       isLoading: !success && !failure && progress
     }
   }
@@ -53,7 +53,7 @@ class Beneficiary extends Component {
   }
 
   render() {
-    const { name, accountNumber, agency, bankName, state, isLoading } = this.state
+    const { beneficiaryName, beneficiaryAccountNumber, beneficiaryAgency, beneficiaryBankName, beneficiaryState, isLoading } = this.state
 
     if (isLoading) {
       return <Loading size="dark" className="m-auto" />
@@ -66,8 +66,8 @@ class Beneficiary extends Component {
         <div className="form-group">
           <Input
             label="Nome do Beneficiário"
-            name="name"
-            value={name}
+            name="beneficiaryName"
+            value={beneficiaryName}
             onChange={this.onChange}
           />
         </div>
@@ -77,8 +77,8 @@ class Beneficiary extends Component {
             <div className="col-lg-4 col-md-3 col-sm-4 col-xs-12">
               <Input
                 label="Número da Conta"
-                name="accountNumber"
-                value={accountNumber}
+                name="beneficiaryAccountNumber"
+                value={beneficiaryAccountNumber}
                 readOnly={true}
                 onChange={this.onChange}
               />
@@ -86,8 +86,8 @@ class Beneficiary extends Component {
             <div className="col-lg-4 col-md-3 col-sm-4 col-xs-12">
               <Input
                 label="Agência"
-                name="agency"
-                value={agency}
+                name="beneficiaryAgency"
+                value={beneficiaryAgency}
                 readOnly={true}
                 onChange={this.onChange}
               />
@@ -95,8 +95,8 @@ class Beneficiary extends Component {
             <div className="col-lg-4 col-md-3 col-sm-4 col-xs-12">
               <Input
                 label="Banco"
-                name="bankName"
-                value={bankName}
+                name="beneficiaryBankName"
+                value={beneficiaryBankName}
                 onChange={this.onChange}
               />
             </div>
@@ -106,16 +106,16 @@ class Beneficiary extends Component {
         <div className="form-group">
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-12">
-              <label htmlFor="state">Estado</label>
-              <select name="state" className="form-control" defaultValue="" onChange={this.onChange}>
+              <label>Estado</label>
+              <select name="beneficiaryState" className="form-control" defaultValue="" onChange={this.onChange}>
                 <option value="" disabled>--</option>
                 <option value="RS">RS</option>
               </select>
             </div>
             {
-              state && <div className="col-lg-6 col-md-6 col-sm-12">
-                <label htmlFor="state">Cidade</label>
-                <select name="city" className="form-control" defaultValue="" onChange={this.onChange}>
+              beneficiaryState && <div className="col-lg-6 col-md-6 col-sm-12">
+                <label>Cidade</label>
+                <select name="beneficiaryCity" className="form-control" defaultValue="" onChange={this.onChange}>
                   <option value="" disabled>--</option>
                   <option value="São Leopoldo">São Leopoldo</option>
                   <option value="Novo Hamburgo">Novo Hamburgo</option>

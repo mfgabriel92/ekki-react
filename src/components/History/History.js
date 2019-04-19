@@ -15,15 +15,15 @@ class History extends Component {
   }
 
   componentDidMount() {
-    const { myself: { me }, getTransactions } = this.props
-    me && getTransactions(me.id)
+    const { getTransactions } = this.props
+    getTransactions(1)
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props) {
     const { transaction: { success, failure, progress, transactions }, myself: { me } } = props
 
     return {
-      userId: me && me.id,
+      userId: me && me.userId,
       historyList: transactions,
       isLoading: !success && !failure && progress
     }
@@ -39,9 +39,13 @@ class History extends Component {
     return (
       <div id="history" className="container">
         <h4>Histórico de Transações</h4>
+        <hr/>
         <table className="table">
           <thead>
             <th scope="col">Beneficiário</th>
+            <th scope="col">Banco</th>
+            <th scope="col">Conta Bancária</th>
+            <th scope="col">Agência</th>
             <th scope="col">Valor</th>
             <th scope="col">Data</th>
           </thead>
@@ -50,9 +54,12 @@ class History extends Component {
               historyList.map(h => {
                 return (
                   <tr key={h.id}>
-                    <td>{h.beneficiaryId}</td>
-                    <td className="col-lg-5">R$ {h.amount.toFixed(2)}</td>
-                    <td className="col-lg-3">{moment(h.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                    <td>{h.beneficiary.beneficiaryName}</td>
+                    <td>{h.beneficiary.beneficiaryBankName}</td>
+                    <td>{h.beneficiary.beneficiaryAccountNumber}</td>
+                    <td>{h.beneficiary.beneficiaryAgency}</td>
+                    <td>R$ {h.transactionAmount.toFixed(2)}</td>
+                    <td>{moment(h.transactionCreatedAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
                   </tr>
                 )
               })
