@@ -47,6 +47,7 @@ class History extends Component {
             <th scope="col">Conta Bancária</th>
             <th scope="col">Agência</th>
             <th scope="col">Valor</th>
+            <th scope="col">Status</th>
             <th scope="col">Data</th>
           </thead>
           <tbody>
@@ -59,6 +60,7 @@ class History extends Component {
                     <td>{h.beneficiary.beneficiaryAccountNumber}</td>
                     <td>{h.beneficiary.beneficiaryAgency}</td>
                     <td>R$ {h.transactionAmount.toFixed(2)}</td>
+                    <td>{h.transactionStatus.toUpperCase()}</td>
                     <td>{moment(h.transactionCreatedAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
                   </tr>
                 )
