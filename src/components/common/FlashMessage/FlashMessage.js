@@ -35,6 +35,7 @@ class FlashMessage extends Component {
     const {
       flash: {
         message,
+        errors,
         type
       }
     } = this.props
@@ -65,10 +66,22 @@ class FlashMessage extends Component {
 
     return (
       !hide && <div className={cx('text-center alert', modalClass)}>
-        <FontAwesome name={icon} className='flash-file-icon'/>
-        <span>
-          {message}
-        </span>
+        <div className="row">
+          <div className="col-lg-2 icon">
+            <FontAwesome name={icon} className='fa-3x' />
+          </div>
+          <div className="col-lg-10">
+            {
+              errors !== null
+                ? errors.map(e => {
+                  return (
+                    <div className="text-left">{e.defaultMessage}</div>
+                  )
+                })
+                : message
+            }
+          </div>
+        </div>
       </div>
     )
   }

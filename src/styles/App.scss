@@ -8,10 +8,15 @@
 
 .alert {
   position: fixed;
-  height: 50px;
+  height: auto;
   top: 138px;
   right: 25px;
   z-index: 999;
+
+  .icon {
+    display: flex;
+    align-items: center;
+  }
 
   .fa {
     margin-right: 15px;

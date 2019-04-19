@@ -24,7 +24,8 @@ const failureMessage = () => {
   return (state, action) => ({
     ...state,
     flashMessage: {
-      message: action.payload,
+      message: action.payload.response.message,
+      errors: action.payload.response.errors || null,
       type: TYPE_ERROR
     }
   })
@@ -38,13 +39,6 @@ const ACTION_HANDLERS = {
       type: TYPE_SUCCESS
     }
   }),
-  [ADD_BENEFICIARY_FAILURE]: state => ({
-    ...state,
-    flashMessage: {
-      message: 'Erro ao adicionar o beneficiário',
-      type: TYPE_ERROR
-    }
-  }),
   [ADD_TRANSACTION_SUCCESS]: state => ({
     ...state,
     flashMessage: {
@@ -52,13 +46,8 @@ const ACTION_HANDLERS = {
       type: TYPE_SUCCESS
     }
   }),
-  [ADD_TRANSACTION_FAILURE]: state => ({
-    ...state,
-    flashMessage: {
-      message: 'Erro ao efetuar a transação',
-      type: TYPE_ERROR
-    }
-  })
+  [ADD_BENEFICIARY_FAILURE]: failureMessage(),
+  [ADD_TRANSACTION_FAILURE]: failureMessage()
 }
 
 const initialState = {
