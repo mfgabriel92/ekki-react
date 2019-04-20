@@ -39,7 +39,7 @@ class History extends Component {
     return (
       <div id="history" className="container">
         <h4>Histórico de Transações</h4>
-        <hr/>
+        <hr />
         <table className="table">
           <thead>
             <th scope="col">Beneficiário</th>
@@ -59,7 +59,13 @@ class History extends Component {
                     <td>{h.beneficiary.beneficiaryBankName}</td>
                     <td>{h.beneficiary.beneficiaryAccountNumber}</td>
                     <td>{h.beneficiary.beneficiaryAgency}</td>
-                    <td>R$ {h.transactionAmount.toFixed(2)}</td>
+                    <td>
+                      {
+                        h.transactionType.toUpperCase() === 'PAYMENT'
+                          ? <span className="text-danger">- R${h.transactionAmount.toFixed(2)}</span>
+                          : <span className="text-success">+ R${h.transactionAmount.toFixed(2)}</span>
+                      }
+                    </td>
                     <td>{h.transactionStatus.toUpperCase()}</td>
                     <td>{moment(h.transactionCreatedAt).format('MMMM Do YYYY, h:mm:ss a')}</td>
                   </tr>
